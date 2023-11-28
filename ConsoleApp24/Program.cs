@@ -164,7 +164,85 @@ namespace ConsoleApp24
 
             GestionarProductos();
         }
+
+        //Parte 2
+        static void MostrarInventario()
+        {
+            Console.Clear();
+            Console.WriteLine("Inventario actual: \n" +
+                "-----------------------------------------------------------");
+
+            for (int i = 0; i < inventario.Count; i++)
+            {
+                Console.WriteLine($"Producto {i + 1}: Nombre: {inventario[i].Nombre} \t- Precio:  $ {inventario[i].Precio} \t- Cantidad:  {inventario[i].Cantidad}");
+            }
+            Console.ReadLine();
+            GestionarProductos();
+        }
+
+        static List<Almacen> Almacenes = new List<Almacen>();
+        static void GestionarAlmacenes()
+        {
+            Console.Clear();
+            Console.Write("--------------------------------------------------\n" +
+                "|| Gestionar Almacenes - Mi Tiendita ||\n" +
+                "--------------------------------------------------\n" +
+                "|| 1. Agregar Almacén            ||\n" +
+                "|| 2. Eliminar Almacén           ||\n" +
+                "|| 3. Mostrar Almacenes          ||\n" +
+                "|| 4. Volver al Menú Principal   ||\n" +
+                "--------------------------------------------------\n" +
+                "Seleccione una opción: ");
+            int opcion = Convert.ToInt32(Console.ReadLine());
+
+            switch (opcion)
+            {
+                case 1:
+                    AgregarAlmacen();
+                    break;
+                case 2:
+                    //EliminarAlmacen();
+                    break;
+                case 3:
+                    //MostrarAlmacen();
+                    break;
+                case 4:
+                    MostrarMenuPrincipal();
+                    break;
+                default:
+                    Console.WriteLine("Opción no válida. Inténtelo de nuevo.");
+                    Console.ReadKey();
+                    GestionarAlmacenes();
+                    break;
+            }
+        }
+        static void AgregarAlmacen()
+        {
+            Console.Clear();
+            Console.Write("===== Pantalla para Agregar Almacén =====\n" +
+                "--------------------------------------------------\n" +
+                "Ingrese el nombre del nuevo almacén:\n");
+            string nombre = Console.ReadLine();
+            Almacen nuevoAlmacen = new Almacen(nombre);
+
+            Almacenes.Add(nuevoAlmacen);
+            Console.Write("--------------------------------------------------\n" +
+            "Confirmación: Almacén agregado exitosamente. ");
+            Console.ReadLine();
+            GestionarAlmacenes();
+        }
     }
+    class Almacen
+    {
+        public string Nombre { get; }
+
+        public Almacen(string nombre)
+        {
+            Nombre = nombre;
+        }
+    }
+
+
     class Producto
     {
         public string Nombre { get; set; }
