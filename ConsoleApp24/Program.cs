@@ -230,7 +230,15 @@ namespace ConsoleApp24
             "Confirmación: Almacén agregado exitosamente. ");
             Console.ReadLine();
             GestionarAlmacenes();
+
         }
+
+
+        public static void siuuuu()
+        {
+            Console.WriteLine("aaaaaaaaaaaaaaaaaaa");
+        }
+
     }
     class Almacen
     {
